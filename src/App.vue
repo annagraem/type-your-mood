@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input v-model="userInput" placeholder="How are you feeling today?">
+    <p>[Debug] mood = {{ mood }}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import vader from 'vader-sentiment'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data: function() {
+    return {
+      userInput: '',
+    }
+  },
+  computed: {
+    mood: function () {
+      return vader.SentimentIntensityAnalyzer.polarity_scores(this.userInput).compound;
+    }
   }
 }
 </script>
