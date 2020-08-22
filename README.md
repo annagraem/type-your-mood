@@ -1,29 +1,9 @@
-# type-your-mood
+# Type your mood
 
-## Project setup
-```
-npm install
-```
+The mood of the page changes based on what you're typing.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Uses the JavaScript port of the [VADER sentiment analysis tool](https://github.com/vaderSentiment/vaderSentiment-js) :
 
-### Compiles and minifies for production
-```
-npm run build
-```
+> Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. Eighth International Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI, June 2014.
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The website is deployed at [https://annagraem.github.io/type-your-mood/](https://annagraem.github.io/type-your-mood/).
