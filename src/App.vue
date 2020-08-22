@@ -1,14 +1,16 @@
 <template>
   <div id="app" class="gradient" v-bind:style="{'--mood': mood}">
-    <input v-model="userInput" placeholder="How are you feeling today?" spellcheck="false">
+    <textarea v-model="userInput" placeholder="How are you feeling today?" spellcheck="false" @input="mixin_autoResize_resize" rows="1"></textarea>
   </div>
 </template>
 
 <script>
 import vader from 'vader-sentiment'
+import mixinAutoResize from "./auto-resize.js";
 
 export default {
   name: 'App',
+  mixins: [mixinAutoResize],
   data: function() {
     return {
       userInput: '',
@@ -48,6 +50,8 @@ html, body {
   position: relative;
   background-image: linear-gradient(to bottom right, rgb(106,133,182), rgb(88, 100, 121));
   z-index: 1;
+
+  --mood: 0.5;
 }
 
 #app::before {
@@ -63,13 +67,22 @@ html, body {
   opacity: var(--mood);
 }
 
-input {
+textarea {
   font-size: 3em;
   text-align: center;
   background: none;
   border: none;
   color: inherit;
   border-bottom: 3px solid var(--border-color);
+
+  width: 80%;
+  @media screen and (max-width: 600px) {
+    width: 95%;
+    height: 100px;
+  }
+
+  resize: none;
+  overflow: hidden;
 
   &:focus {
     border: none;
